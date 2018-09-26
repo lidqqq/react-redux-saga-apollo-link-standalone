@@ -1,0 +1,34 @@
+{
+  "license": "MIT",
+  "name": "react-redux-saga-apollo-standalone",
+  "scripts": {
+    "dev": "next src/app",
+    "build": "next build src/app",
+    "start:app": "next start src/app",
+    "start:server": "node src/server/index.js",
+    "start": "yarn build && yarn start:app",
+    "start:pm2": "yarn build && pm2 start",
+    "stop:pm2": "pm2 stop all"
+  },
+  "dependencies": {
+    "apollo-link": "^1.2.3",
+    "apollo-link-http": "^1.5.5",
+    "apollo-server-express": "^2.1.0",
+    "es6-promise": "4.1.1",
+    "express": "^4.16.3",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.9.2",
+    "isomorphic-unfetch": "2.0.0",
+    "next": "^7.0.0",
+    "next-redux-saga": "3.0.0",
+    "next-redux-wrapper": "2.0.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-redux": "5.0.7",
+    "redux": "4.0.0",
+    "redux-saga": "0.16.0"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "2.13.2"
+  }
+}
