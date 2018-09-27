@@ -33,3 +33,10 @@ $ yarn build
 $ yarn start:app
 $ yarn start:server
 ```
+
+## GraphQL sample
+
+```bash
+$ yarn start:server
+$ node ./server-client.js
+```
