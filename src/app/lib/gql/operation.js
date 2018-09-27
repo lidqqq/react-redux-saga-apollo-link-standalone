@@ -31,4 +31,14 @@ export default {
       variables: { id },
     };
   },
+  addBook(title) {
+    return {
+      query: gql`
+        mutation($title: String!) {
+          addBook(title: $title)
+        }
+      `,
+      variables: { title },
+    };
+  },
 };

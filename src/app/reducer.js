@@ -5,8 +5,7 @@ export const exampleInitialState = {
   error: false,
   lastUpdate: 0,
   light: false,
-  placeholderData: null,
-  gql: null
+  gql: null,
 };
 
 export default function reducer(state = exampleInitialState, action) {
@@ -14,43 +13,37 @@ export default function reducer(state = exampleInitialState, action) {
     case actionTypes.FAILURE:
       return {
         ...state,
-        ...{ error: action.error }
+        ...{ error: action.error },
       };
 
     case actionTypes.INCREMENT:
       return {
         ...state,
-        ...{ count: state.count + 1 }
+        ...{ count: state.count + 1 },
       };
 
     case actionTypes.DECREMENT:
       return {
         ...state,
-        ...{ count: state.count - 1 }
+        ...{ count: state.count - 1 },
       };
 
     case actionTypes.RESET:
       return {
         ...state,
-        ...{ count: exampleInitialState.count }
-      };
-
-    case actionTypes.LOAD_DATA_SUCCESS:
-      return {
-        ...state,
-        ...{ placeholderData: action.data }
+        ...{ count: exampleInitialState.count },
       };
 
     case actionTypes.GQL_SUCCESS:
       return {
         ...state,
-        ...{ gql: action.data }
+        ...{ gql: action.data },
       };
 
     case actionTypes.TICK_CLOCK:
       return {
         ...state,
-        ...{ lastUpdate: action.ts, light: !!action.light }
+        ...{ lastUpdate: action.ts, light: !!action.light },
       };
 
     default:

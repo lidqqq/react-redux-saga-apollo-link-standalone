@@ -2,15 +2,9 @@ import { delay } from "redux-saga";
 import { all, call, put, take, takeLatest } from "redux-saga/effects";
 import es6promise from "es6-promise";
 import "isomorphic-unfetch";
-import {
-  actionTypes,
-  failure,
-  loadDataSuccess,
-  gqlSuccess,
-  tickClock
-} from "./actions";
+import { actionTypes, failure, gqlSuccess, tickClock } from "./actions";
 import gql from "./lib/gql";
-const { query, operation } = gql;
+const { query } = gql;
 
 es6promise.polyfill();
 
@@ -22,31 +16,17 @@ function* runClockSaga() {
   }
 }
 
-function* loadDataGql() {
+function* queryGQL({ ope }) {
   try {
-    const res = yield call(query(operation.books));
+    const res = yield call(query(ope));
     yield put(gqlSuccess(res.data));
   } catch (err) {
     yield put(failure(err));
   }
 }
 
-function* loadDataSaga() {
-  try {
-    const res = yield fetch("https://jsonplaceholder.typicode.com/users");
-    const data = yield res.json();
-    yield put(loadDataSuccess(data));
-  } catch (err) {
-    yield put(failure(err));
-  }
-}
-
 function* rootSaga() {
-  yield all([
-    call(runClockSaga),
-    takeLatest(actionTypes.LOAD_DATA, loadDataSaga),
-    takeLatest(actionTypes.GQL, loadDataGql)
-  ]);
+  yield all([call(runClockSaga), takeLatest(actionTypes.GQL, queryGQL)]);
 }
 
 export default rootSaga;

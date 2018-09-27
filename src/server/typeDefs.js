@@ -2,6 +2,7 @@ const { gql } = require("apollo-server-express");
 
 module.exports.default = gql`
   schema {
+    query: Query
     mutation: Mutation
   }
   type Query {
@@ -10,7 +11,7 @@ module.exports.default = gql`
     getBooks(id: Int): [Book]
   }
   type Mutation {
-    addBooks(title: String): Int
+    addBook(title: String): Boolean
   }
   type Book {
     id: Int

@@ -14,8 +14,8 @@ module.exports.default = {
     },
   },
   Mutation: {
-    addBooks: (parent, args) => {
-      return 3;
+    addBook: (parent, args) => {
+      return true;
     },
   },
 };

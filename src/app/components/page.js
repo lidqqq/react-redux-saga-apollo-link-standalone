@@ -4,16 +4,7 @@ import { connect } from "react-redux";
 import Counter from "./counter";
 import Clock from "./clock";
 
-function Page({
-  error,
-  lastUpdate,
-  light,
-  linkTo,
-  NavigateTo,
-  placeholderData,
-  gql,
-  title
-}) {
+function Page({ error, lastUpdate, light, linkTo, NavigateTo, gql, title }) {
   return (
     <div>
       <h1>{title}</h1>
@@ -27,11 +18,6 @@ function Page({
       {gql && (
         <pre>
           <code>{JSON.stringify(gql, null, 2)}</code>
-        </pre>
-      )}
-      {placeholderData && (
-        <pre>
-          <code>{JSON.stringify(placeholderData, null, 2)}</code>
         </pre>
       )}
       {error && <p style={{ color: "red" }}>Error: {error.message}</p>}
